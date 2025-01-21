@@ -1,12 +1,14 @@
+
 @rooturl = http://localhost:8080/api/v1/ft
 @userEp = {{rooturl}}/users
+@transactionEp= {{rooturl}}/transactions
 
 POST {{userEp}}/register
 Content-Type: application/json
 
 {
-    "username":"apson karki",
-    "email":"moteyvai@gmail.com",
+    "username":"ishwor karki",
+    "email":"bauu@gmail.com",
     "password":"passwordthaxaina"
 }
 
@@ -16,6 +18,39 @@ POST {{userEp}}/login
 Content-Type: application/json
 
 {
-    "email":"moteyvai@gmail.com",
+    "email":"bauu@gmail.com",
     "password":"passwordthaxaina"
+}
+
+###
+POST {{transactionEp}}
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
+
+{
+    "type":"Expense",
+    "amount":200,
+    "date":"10-10-2020",
+    "description":"by bauuuuu"
+}
+
+###
+GET {{transactionEp}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
+
+###
+DELETE {{transactionEp}}/678f21631499a7dca28904f5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
+
+
+###
+DELETE {{transactionEp}}
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
+
+{
+    "transactionsid":[
+        "678f1fcdd3579465e3659f3e",
+        "678f1fcdd3579465e3659f41"
+    ]
 }
