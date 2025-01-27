@@ -25,7 +25,7 @@ Content-Type: application/json
 ###
 POST {{transactionEp}}
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDIwNzI5LCJleHAiOjE3MzgxMDcxMjl9.aY6wPlEcFtYxRE8PfU1W8AeBl_xj-t5c8-JpqgpgVUw
 
 {
     "type":"Expense",
@@ -36,21 +36,20 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwu
 
 ###
 GET {{transactionEp}}
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDIwNzI5LCJleHAiOjE3MzgxMDcxMjl9.aY6wPlEcFtYxRE8PfU1W8AeBl_xj-t5c8-JpqgpgVUw
 ###
-DELETE {{transactionEp}}/678f21631499a7dca28904f5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
+DELETE {{transactionEp}}/678f21621499a7dca28904f2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDIwNzI5LCJleHAiOjE3MzgxMDcxMjl9.aY6wPlEcFtYxRE8PfU1W8AeBl_xj-t5c8-JpqgpgVUw
 
 
 ###
 DELETE {{transactionEp}}
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM3NDMyMzY2LCJleHAiOjE3Mzc1MTg3NjZ9.Gdn5NdpGx1aQyh3sGYIBJFeVgprYzCTfwyT7JchuXG8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDIwNzI5LCJleHAiOjE3MzgxMDcxMjl9.aY6wPlEcFtYxRE8PfU1W8AeBl_xj-t5c8-JpqgpgVUw
 
 {
     "transactionsid":[
-        "678f1fcdd3579465e3659f3e",
-        "678f1fcdd3579465e3659f41"
+        "67981907ca4e081ac96f93dd",
+        "6798178625189bf644fd192c"
     ]
 }

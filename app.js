@@ -1,11 +1,11 @@
 import express from 'express'
 import cors from 'cors'
 import { connectDb } from './config/mongodbConnection.js';
-import mongoose from 'mongoose';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { createUser,getUserByEmail } from './models/user/UserModels.js';
 import { createTransaction, deleteManyTransactions, deleteTransaction, getTransaction } from './models/transaction/TransactionModel.js';
+import { authenticate } from './middlewares/authenticate.js';
 
 // dotenv.config();  not necessary as it is injected in run command 
 
@@ -102,22 +102,13 @@ app.post("/api/v1/ft/users/login",async (req,res)=>{
     }
 })
 
-app.post("/api/v1/ft/transactions",async (req,res) => {
+app.post("/api/v1/ft/transactions", authenticate, async(req,res) => {
     try {
-        const token = req.headers.authorization;
 
-        const decodedData = await jwt.verify(token,process.env.JWT_SECRET_KEY)
-
-        if(decodedData?.email){
-
-            const userData = await getUserByEmail(decodedData.email);
-
-            if(userData){
-
-                const{type, description, amount, date}=req.body;
+        const{type, description, amount, date}=req.body;
 
                 const newCreatedData= await createTransaction({
-                    userId:userData._id,
+                    userId: req.userData._id,
                     type,
                     description,
                     amount,
@@ -128,20 +119,6 @@ app.post("/api/v1/ft/transactions",async (req,res) => {
                     message:"transaction created",
                     newCreatedData
                 })
-            }else{
-                res.status(404).json({
-                    status:"error",
-                    message:"user not found"
-                })
-            }
-
-            
-        }else{
-            res.status(401).json({
-                status:"error",
-                message: "No payload"
-            })
-        }
         
     } catch (error) {
         console.log(error);
@@ -152,55 +129,27 @@ app.post("/api/v1/ft/transactions",async (req,res) => {
     }
 })
 
-app.get("/api/v1/ft/transactions", async (req, res) => {
+app.get("/api/v1/ft/transactions",authenticate, async (req, res) => {
     try {
-        const token = req.headers.authorization;
-
-        const decodedData = await jwt.verify(token, process.env.JWT_SECRET_KEY);
-
-        if (decodedData?.email) {
-            const userData = await getUserByEmail( decodedData.email);
-
-            if (userData) {
-                const transactionData = await getTransaction(userData._id);
-                res.status(200).json({
-                    status: "success",
-                    transactionData
-                });
-            } else {
-                res.status(404).json({
-                    status: "error",
-                    message: "user not found"
-                });
-            }
-        } else {
-            res.status(401).json({
-                status: "error",
-                message: "No payload"
-            });
-        }
+        const transactionData = await getTransaction(req.userData._id);
+        res.status(200).json({
+            status: "success",
+            transactionData
+        });
     } catch (error) {
         console.log(error);
-        res.status(500).json({
+        return res.status(500).json({
             status: "error",
             message: "Error while fetching transactions"
         });
     }
 });
 
-app.delete("/api/v1/ft/transactions/:tid",async (req,res) => {
+app.delete("/api/v1/ft/transactions/:tid",authenticate ,async (req,res) => {
     try {
-        const token = req.headers.authorization;
-
-        const decodedData = await jwt.verify(token, process.env.JWT_SECRET_KEY);
-
-        if (decodedData?.email) {
-            const userData = await getUserByEmail(decodedData.email);
-
-            if (userData) {
                 const transactionData = await deleteTransaction(
                     req.params.tid,
-                    userData._id
+                    req.userData._id
                 );
 
                 if (transactionData){
@@ -214,18 +163,7 @@ app.delete("/api/v1/ft/transactions/:tid",async (req,res) => {
                         message:"Error while deleting transaction"
                     });
                 }
-            } else {
-                res.status(404).json({
-                    status: "error",
-                    message: "user not found"
-                });
-            }
-        } else {
-            res.status(401).json({
-                status: "error",
-                message: "No payload"
-            });
-        }
+           
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -235,21 +173,13 @@ app.delete("/api/v1/ft/transactions/:tid",async (req,res) => {
     }
 })
 
-app.delete("/api/v1/ft/transactions",async (req,res) => {
+app.delete("/api/v1/ft/transactions",authenticate ,async (req,res) => {
     try {
-        const token = req.headers.authorization;
-
-        const decodedData = await jwt.verify(token, process.env.JWT_SECRET_KEY);
-
-        if (decodedData?.email) {
-            const userData = await getUserByEmail(decodedData.email);
-
-            if (userData) {
 
                 const transactionsids=req.body.transactionsid;
 
 
-                const transactionData = await deleteManyTransactions(transactionsids,userData._id)
+                const transactionData = await deleteManyTransactions(transactionsids,req.userData._id)
 
                 if (transactionData){
                     res.status(200).json({
@@ -262,18 +192,6 @@ app.delete("/api/v1/ft/transactions",async (req,res) => {
                         message:"Error while deleting transactions"
                     });
                 }
-            } else {
-                res.status(404).json({
-                    status: "error",
-                    message: "user not found"
-                });
-            }
-        } else {
-            res.status(401).json({
-                status: "error",
-                message: "No payload"
-            });
-        }
     } catch (error) {
         console.log(error);
         res.status(500).json({
