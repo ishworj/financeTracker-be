@@ -7,8 +7,8 @@ POST {{userEp}}/register
 Content-Type: application/json
 
 {
-    "username":"ishwor karki",
-    "email":"bauu@gmail.com",
+    "username":"ishworii karki",
+    "email":"bauuuuu@gmail.com",
     "password":"passwordthaxaina"
 }
 
@@ -19,13 +19,13 @@ Content-Type: application/json
 
 {
     "email":"bauu@gmail.com",
-    "password":"passwordthaxaina"
+    "password":"passwordthaxain"
 }
 
 ###
 POST {{transactionEp}}
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDIwNzI5LCJleHAiOjE3MzgxMDcxMjl9.aY6wPlEcFtYxRE8PfU1W8AeBl_xj-t5c8-JpqgpgVUw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDMyOTk2LCJleHAiOjE3MzgxMTkzOTZ9.AhuTwb6KcBn6LblqFnaTaiAVRx6_4DQdEj14HsCWl-Y
 
 {
     "type":"Expense",
@@ -36,10 +36,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwu
 
 ###
 GET {{transactionEp}}
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDIwNzI5LCJleHAiOjE3MzgxMDcxMjl9.aY6wPlEcFtYxRE8PfU1W8AeBl_xj-t5c8-JpqgpgVUw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDMyOTk2LCJleHAiOjE3MzgxMTkzOTZ9.AhuTwb6KcBn6LblqFnaTaiAVRx6_4DQdEj14HsCWl-Y
 ###
-DELETE {{transactionEp}}/678f21621499a7dca28904f2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDIwNzI5LCJleHAiOjE3MzgxMDcxMjl9.aY6wPlEcFtYxRE8PfU1W8AeBl_xj-t5c8-JpqgpgVUw
+DELETE {{transactionEp}}/679816269f2070846c602cc7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhdXVAZ21haWwuY29tIiwiaWF0IjoxNzM4MDI0NDE1LCJleHAiOjE3MzgxMTA4MTV9.Y74bIrUDej7EjnpdJL9Y74LZTDiythmOkaVV79rzbjE
 
 
 ###
